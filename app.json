@@ -1,0 +1,51 @@
+{
+  "expo": {
+    "name": "My Notebook",
+    "slug": "my-notebook",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "notebookmobileapp",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.quajoking.mynotebook",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.quajoking.mynotebook"
+    },
+    "plugins": [
+      "expo-router",
+      // [
+      //   "expo-splash-screen",
+      //   {
+      //     "image": "./assets/images/splash-icon.png",
+      //     "imageWidth": 200,
+      //     "imageHeight": 200,
+      //     "resizeMode": "contain",
+      //     "backgroundColor": "#ffffff"
+      //   }
+      // ],
+      "expo-sqlite"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "12d7a736-9ef1-4f5d-8d73-215a5e7c2df8"
+      }
+    },
+    "owner": "quajoking"
+  }
+}
