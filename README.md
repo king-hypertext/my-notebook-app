@@ -1,16 +1,20 @@
-# Welcome to your Expo app 👋
+# My Notebook App
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+It is a simple app for taking notes on your mobile device (iOS and Android)
+Tech Stack: React, Typescript, React Native, Expo
 
-## Get started
+### Instructions on how to get started
 
-1. Install dependencies
+1. Ensure you have set up your machine for React Native App development
+
+2. Install dependencies
 
    ```bash
    npm install
    ```
 
-2. Start the app
+3. Start the app
 
    ```bash
    npx expo start
@@ -23,28 +27,14 @@ In the output, you'll find options to open the app in a
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Screenshots
 
-## Get a fresh project
+![Home](screenshots/home.png)
+![Home](screenshots/home-1.png)
+![Add Note](screenshots/add-note.png)
+![Edit Note](screenshots/edit-note.png)
+![Note options](screenshots/note-options.png)
 
-When you're ready, run:
+#### You can download a preview build below, android only
 
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+[Download](bundle/my-notebook.apk)
