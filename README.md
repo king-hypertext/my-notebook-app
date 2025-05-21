@@ -29,12 +29,8 @@ In the output, you'll find options to open the app in a
 
 ### Screenshots
 
-![Home](screenshots/home.png)
-![Home](screenshots/home-1.png)
-![Add Note](screenshots/add-note.png)
-![Edit Note](screenshots/edit-note.png)
-![Note options](screenshots/note-options.png)
+![Home](screenshots/home.png) ![Home](screenshots/home-1.png) ![Add Note](screenshots/add-note.png) ![Edit Note](screenshots/edit-note.png) ![Note options](screenshots/note-options.png)
 
-#### You can download a preview build below, android only
+#### You can request a preview build below, android only
 
-[Download](bundle/my-notebook.apk)
+[Get preview build](https://wa.me/+233543093942)
