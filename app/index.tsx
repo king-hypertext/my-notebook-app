@@ -65,7 +65,7 @@ export default function Index() {
 
   const deleteNote = async (noteId: number | null) => {
     if (!noteId || !db) {
-      console.log("Note ID is null or DB not initialized, skipping delete.");
+      // console.log("Note ID is null or DB not initialized, skipping delete.");
       return;
     }
     // const db = await SQLite.openDatabaseAsync('note_app');
@@ -77,8 +77,8 @@ export default function Index() {
           text: 'Cancel',
           style: 'cancel',
           onPress: () => {
-            setShowDropDown(false);
-            setSelectedNoteId(null);
+            // setShowDropDown(false);
+            // setSelectedNoteId(null);
           },
         },
         {
@@ -289,7 +289,7 @@ export default function Index() {
           }
 
           {showToolTip &&
-            <View style={styles.tooltip}>
+            <View style={{ ...styles.tooltip, bottom: insets.bottom + 60 }}>
               <Text style={styles.tooltipText}>
                 add note
               </Text>
@@ -378,13 +378,20 @@ export default function Index() {
       }
       {
         showToast &&
-        <FadeInView style={styles.toastContainer}>
-          <View style={styles.toastTextContainer}>
+        <FadeInView style={{
+          position: 'absolute',
+          bottom: insets.bottom + 80,
+          left: 0,
+          right: 0,
+          backgroundColor: 'transparent',
+          maxHeight: 55,
+        }}>
+          <View style={[styles.toastTextContainer,]}>
             <Text style={styles.toastText}>
               Note copied to clipboard
             </Text>
           </View>
-        </FadeInView>
+        </FadeInView >
 
       }
     </>
@@ -434,7 +441,6 @@ const styles = StyleSheet.create({
   popUpMenuOptionItem: {
     marginHorizontal: 10,
     color: '#233',
-    textAlign: 'center'
   },
   popUpMenu: {
     flex: 1,
@@ -496,7 +502,6 @@ const styles = StyleSheet.create({
   },
   tooltip: {
     position: 'absolute',
-    bottom: 80,
     left: 0,
     right: 0,
     backgroundColor: 'transparent'
