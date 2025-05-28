@@ -21,7 +21,16 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.quajoking.mynotebook"
+      "package": "com.quajoking.mynotebook",
+      "splash": {
+        "image": "./assets/images/adaptive-icon.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#ffffff",
+         "dark": {
+          "image": "./assets/images/adaptive-icon.png", // Optional: A different image for dark mode
+          "backgroundColor": "#000000" // A black background for dark mode
+        }
+      }
     },
     "plugins": [
       "expo-router",
