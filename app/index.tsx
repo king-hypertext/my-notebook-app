@@ -6,6 +6,7 @@ import { useFocusEffect, useRouter } from "expo-router";
 import * as SQLite from 'expo-sqlite';
 import React from "react";
 import { ActivityIndicator, Alert, FlatList, Platform, Pressable, Share, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, useWindowDimensions, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 
 export default function Index() {
@@ -123,7 +124,7 @@ export default function Index() {
           toggleDropUpMenu(item.id);
         }}>
         <View>
-          <Text style={styles.itemTitle}>{truncateText(item.title ?? '')}</Text>
+          <Text style={styles.itemTitle}>{truncateText(item.title ?? '', 40)}</Text>
           <Text style={{
             fontSize: 12,
             ...Platform.select({
@@ -257,7 +258,7 @@ export default function Index() {
       }, 3000);
     }
   };
-
+  const insets = useSafeAreaInsets();
   return (
     <>
       <TouchableWithoutFeedback onPress={(e) => {
@@ -294,7 +295,7 @@ export default function Index() {
               </Text>
             </View>
           }
-          <View style={styles.addButtonContainer}>
+          <View style={[styles.addButtonContainer, { bottom: insets.bottom + 10 }]}>
             <TouchableOpacity activeOpacity={0.8} onLongPress={() => setShowToolTip(true)}
               onPressOut={() => setTimeout(() => {
                 setShowToolTip(false);
@@ -328,20 +329,17 @@ export default function Index() {
                 top: dimension.height - 275,
               },
               android: {
-                top: dimension.height - 205,
+                top: dimension.height - 225,
               }
             }),
-            borderTopRightRadius: 8,
-            borderTopLeftRadius: 8,
+            borderTopRightRadius: 25,
+            borderTopLeftRadius: 25,
             backgroundColor: '#fff',
             paddingVertical: 8
           }}>
             <TouchableOpacity style={styles.popUpMenuOption} activeOpacity={0.5} onPress={async () => { deleteNote(selectedNoteId) }}>
-              <Text>
-                <FontAwesome size={15} style={{
-                  marginRight: 8,
-                  color: '#233'
-                }} name="trash" />
+              <Text style={styles.popUpMenuOptionItem}>
+                <FontAwesome size={15} style={styles.popUpMenuOptionIcon} name="trash" />
               </Text>
               <Text style={{
                 marginLeft: 8,
@@ -353,11 +351,8 @@ export default function Index() {
             <TouchableOpacity
               style={styles.popUpMenuOption} activeOpacity={0.5} onPress={
                 async () => onCopy(notes.find(note => note.id === selectedNoteId))}>
-              <Text>
-                <FontAwesome size={15} style={{
-                  marginRight: 8,
-                  color: '#233'
-                }} name="copy" />
+              <Text style={styles.popUpMenuOptionItem}>
+                <FontAwesome size={15} style={styles.popUpMenuOptionIcon} name="copy" />
               </Text>
               <Text style={{
                 marginLeft: 8,
@@ -368,11 +363,8 @@ export default function Index() {
             </TouchableOpacity>
             <TouchableOpacity style={styles.popUpMenuOption} activeOpacity={0.5}
               onPress={async () => onShare(notes.find(note => note.id === selectedNoteId))}>
-              <Text>
-                <FontAwesome size={15} style={{
-                  marginRight: 8,
-                  color: '#233'
-                }} name="share" />
+              <Text style={styles.popUpMenuOptionItem}>
+                <FontAwesome size={15} style={styles.popUpMenuOptionIcon} name="share" />
               </Text>
               <Text style={{
                 marginLeft: 8,
@@ -429,9 +421,20 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     borderBottomWidth: 0.4,
     borderBottomColor: 'rgba(0,0,0,0.3)'
+  },
+  popUpMenuOptionIcon: {
+    marginRight: 8,
+    color: '#233',
+    fontSize: 16,
+    fontWeight: 600
+  },
+  popUpMenuOptionItem: {
+    marginHorizontal: 10,
+    color: '#233',
+    textAlign: 'center'
   },
   popUpMenu: {
     flex: 1,
@@ -442,25 +445,14 @@ const styles = StyleSheet.create({
     top: 0,
     width: '100%',
     zIndex: 100005,
-    backgroundColor: 'rgba(0,0,0)',
-    ...Platform.select({
-      ios: {
-        shadowColor: 'rgba(0, 0, 0, 0.5)',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 1,
-        shadowRadius: 2,
-      },
-      android: {
-        elevation: 15,
-      },
-    }),
+    backgroundColor: 'rgba(0, 0, 0, 0.15)',
   },
   options: {
     flex: 1,
     justifyContent: 'center',
     marginVertical: 'auto',
     paddingHorizontal: 12,
-    borderRadius: 18,
+    // borderRadius: 25,
     backgroundColor: 'transparent'
   },
   main: {
@@ -471,7 +463,6 @@ const styles = StyleSheet.create({
   },
   addButtonContainer: {
     position: 'absolute',
-    bottom: 30,
     left: 0,
     right: 0,
     backgroundColor: 'transparent',
